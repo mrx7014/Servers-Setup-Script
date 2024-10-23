@@ -4,5 +4,5 @@
 
 ### Use this
 ```
-git clone https://github.com/mrx7014/GoogleColab-Setup-Script ; cd GoogleColab-Setup-Script ; chmod +x GC-Setup.sh ; ./GC-setup.sh
+git clone https://github.com/mrx7014/GoogleColab-Setup-Script ; cd GoogleColab-Setup-Script ; chmod +x GC-Setup.sh ; ./GC-Setup.sh
 ```
