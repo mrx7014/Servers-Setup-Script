@@ -3,6 +3,7 @@ clear
 echo "Google Colab Setup Script"
 echo "By: MRX7014"
 sleep 3
+cd
 sudo apt-get update -y
 sudo apt-get upgrade -y
 wget -O akuh.zip https://media.githubusercontent.com/media/akuhnet/wqemu/master/akuh.zip
