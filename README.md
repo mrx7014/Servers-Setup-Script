@@ -1,8 +1,8 @@
-# Google Colab Setup Script
+# Servers Setup Script
 
 <br />
 
 ### Use this
 ```
-git clone https://github.com/mrx7014/GoogleColab-Setup-Script ; cd GoogleColab-Setup-Script ; chmod +x GC-Setup.sh ; ./GC-Setup.sh
+git clone https://github.com/mrx7014/Servers-Setup-Script ; cd Servers-Setup-Script ; chmod +x Setup.sh ; ./Setup.sh
 ```
