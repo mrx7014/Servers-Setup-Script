@@ -1,6 +1,6 @@
 #! /bin/bash
 clear
-echo "Google Colab Setup Script"
+echo "Servers Setup Script"
 echo "By: MRX7014"
 sleep 3
 cd
