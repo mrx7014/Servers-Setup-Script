@@ -6,7 +6,7 @@ sleep 3
 cd
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get install cmake clang clang-11 pkg-config libbrotli-dev liblz4-dev libpcre2-dev libzstd-dev protobuf-compiler libprotobuf-dev ccache build-essential ninja-build bc bison flex libssl-dev gcc g++ libstdc++-12-dev lld locate libstdc++-14-dev libgtest-dev android-tools-adb android-tools-fastboot erofs-utils apktool
+sudo apt-get install cmake clang clang-11 pkg-config libbrotli-dev liblz4-dev libpcre2-dev libzstd-dev protobuf-compiler libprotobuf-dev ccache build-essential ninja-build bc bison flex libssl-dev gcc g++ libstdc++-12-dev lld locate libstdc++-14-dev libgtest-dev android-tools-adb android-tools-fastboot erofs-utils apktool fuse
 sudo apt update && DEBIAN_FRONTEND=noninteractive sudo apt install -yq \
   attr ccache clang ffmpeg golang \
   libbrotli-dev libgtest-dev libprotobuf-dev libunwind-dev libpcre2-dev \
