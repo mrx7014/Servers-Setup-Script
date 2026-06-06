@@ -58,47 +58,41 @@ cd Servers-Setup-Script
 chmod +x setup.sh
 ./setup.sh
 ```
-
 ---
 
 ## 📋 Sample Output
 
 ```
-  ╔══════════════════════════════════╗
-  ║   Servers Setup Script           ║
-  ║   By: MRX7014                    ║
-  ╚══════════════════════════════════╝
+Servers Setup Script — by MRX7014
 
-[*] Detected: ubuntu 24.04 (noble)
-[+] Adding Ubuntu toolchain PPA...
+── System
+[*] ubuntu 24.04
+[+] updated
 
-━━━ Updating System ━━━
-[*] Refreshing package lists from all sources...
-[+] Package lists updated
-[*] Upgrading installed packages to latest versions...
-[+] System upgraded
+── Build tools
+── Clang / LLVM
+[+] lldb: lldb-18
+── Cross compilers
+── Python / Java
+── Libraries
+── Kernel tools
+── Android tools
+── Misc
+── Cleanup
 
-━━━ Core Build Tools ━━━
-[*] gcc, g++, make, cmake, ninja -- compilers and build systems...
-
-━━━ Clang / LLVM ━━━
-[+] Installed (lldb debugger): lldb-18
-
-╔══════════════════════════════════════╗
-║   ✓ Setup completed successfully!    ║
-╚══════════════════════════════════════╝
+✓ Done
 ```
 
 ---
 
 ## 🔧 How It Works
 
-The script uses three install helpers:
+The script uses three helpers:
 
 ```bash
-try_install pkg          # install one package, warn and skip on failure
-install_group desc pkgs  # install a group, collect and report all skipped
-try_install_any desc ...  # try multiple names, use first that works
+try pkg          # install one package, warn and skip on failure
+grp pkg1 pkg2    # install a group, collect and report all skipped
+any desc p1 p2   # try multiple names, use first that works
 ```
 
 This means a single unavailable package **never blocks** the rest of the setup.
