@@ -10,6 +10,7 @@
 - 🧠 **Smart distro detection** — reads `/etc/os-release` and adapts automatically
 - 🔁 **Fallback logic** — tries alternative package names/versions before giving up (e.g. `lldb-18 → lldb-17 → ...`)
 - 🛡️ **Non-breaking** — skipped packages are warned about, never crash the script
+- 📊 **Real-time progress** — per-step progress bar that resets and tracks every package
 - 🎨 **Colored output** — clear visual steps so you always know what's happening
 - 📦 **PPA auto-setup** — adds `ubuntu-toolchain-r/test` on Ubuntu for newer cross-compilers
 
@@ -58,27 +59,36 @@ cd Servers-Setup-Script
 chmod +x setup.sh
 ./setup.sh
 ```
+
 ---
 
 ## 📋 Sample Output
 
 ```
-Servers Setup Script — by MRX7014
+  Servers Setup Script by MRX7014
 
-── System
-[*] ubuntu 24.04
-[+] updated
+── System Update
 
-── Build tools
+  ████████████████████████████████████████ 100%  done
+
+── Build Tools
+
+  ██████████████░░░░░░░░░░░░░░░░░░░░░░░░░░  35%  cmake
+
 ── Clang / LLVM
-[+] lldb: lldb-18
-── Cross compilers
-── Python / Java
+
+  ████████████████████████████████████████ 100%  done
+[+] lldb → lldb-18
+
+── Cross Compilers
+
+  ████████████████████████████████████████ 100%  done
+
 ── Libraries
-── Kernel tools
-── Android tools
-── Misc
-── Cleanup
+
+  ████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  20%  libelf-dev
+
+...
 
 ✓ Done
 ```
@@ -90,12 +100,19 @@ Servers Setup Script — by MRX7014
 The script uses three helpers:
 
 ```bash
-try pkg          # install one package, warn and skip on failure
-grp pkg1 pkg2    # install a group, collect and report all skipped
-any desc p1 p2   # try multiple names, use first that works
+install_pkgs "Step Name" pkg1 pkg2 ...
+# installs a list of packages with a real-time progress bar
+# skipped packages are reported at the end of the step
+
+install_any "desc" pkg-a pkg-b pkg-c
+# tries each name in order, uses the first one that works
+# used for packages like lldb that change name by version
+
+run_update
+# runs apt-get update + upgrade with a progress bar
 ```
 
-This means a single unavailable package **never blocks** the rest of the setup.
+Each step resets the progress bar from 0% and tracks every package individually. A single unavailable package **never blocks** the rest of the setup.
 
 ---
 
