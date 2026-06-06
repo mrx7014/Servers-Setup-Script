@@ -1,18 +1,49 @@
-#! /bin/bash
+#!/bin/bash
 clear
 echo "Servers Setup Script"
 echo "By: MRX7014"
 sleep 3
-cd
-sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo apt-get install cmake clang clang-11 pkg-config libbrotli-dev liblz4-dev libpcre2-dev libzstd-dev protobuf-compiler libprotobuf-dev ccache build-essential ninja-build bc bison flex libssl-dev gcc g++ libstdc++-12-dev lld locate libstdc++-14-dev libgtest-dev android-tools-adb android-tools-fastboot erofs-utils apktool fuse libc++-dev libc++abi-dev g++-10 xmlstarlet dos2unix pcre2-utils -y
-sudo apt update && DEBIAN_FRONTEND=noninteractive sudo apt install \
-  attr ccache clang ffmpeg golang \
-  libbrotli-dev libgtest-dev libprotobuf-dev libunwind-dev libpcre2-dev \
-  libzstd-dev linux-modules-extra-$(uname -r) lld protobuf-compiler webp \
-  zipalign && sudo modprobe erofs f2fs -y
-sudo apt install make build-essential libncurses-dev bison flex libssl-dev libelf-dev python3 flex bison python-is-python3 cpio attr zip clang cmake libbrotli-dev liblz4-dev libpcre2-dev protobuf-compiler libprotobuf-dev ccache libgtest-dev openjdk-21-jdk npm webp ffmpeg -y
-sudo apt install bc bison build-essential ccache curl flex g++-multilib gcc-multilib git git-lfs gnupg gperf imagemagick  lib32readline-dev lib32z1-dev liblz4-tool  libsdl1.2-dev libssl-dev libwxgtk3.0-gtk3-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev -y
-sudo apt-get update -y && sudo apt-get install dialog bash sed wget git curl zip tar jq expect make cmake automake autoconf llvm lld lldb clang gcc binutils bison perl gperf gawk flex bc python3 python2 zstd openssl unzip cpio bc bison build-essential ccache liblz4-tool libsdl1.2-dev libstdc++6 libxml2 libxml2-utils lzop pngcrush schedtool squashfs-tools xsltproc zlib1g-dev libncurses5-dev bzip2 git gcc g++ libssl-dev gcc-aarch64-linux-gnu gcc-arm-linux-gnueabihf gcc-arm-linux-gnueabi dos2unix -y
-echo "Done"
+set -e
+cd ~
+export DEBIAN_FRONTEND=noninteractive
+echo "[*] Updating system..."
+sudo apt-get update -y && sudo apt-get upgrade -y
+echo "[*] Installing build dependencies..."
+sudo apt-get install -y \
+  android-tools-adb android-tools-fastboot \
+  apktool apt-utils attr automake autoconf \
+  bc bison binutils build-essential bzip2 \
+  ccache clang clang-11 cmake cpio curl \
+  device-tree-compiler dialog dos2unix dwarves \
+  erofs-utils expect \
+  fakeroot flex ffmpeg fuse \
+  g++ g++-10 g++-multilib gcc gcc-multilib \
+  gcc-aarch64-linux-gnu gcc-arm-linux-gnueabihf gcc-arm-linux-gnueabi \
+  gawk gh git git-lfs gnupg golang gperf \
+  imagemagick jq \
+  kmod \
+  lib32readline-dev lib32z1-dev \
+  libbrotli-dev libc++-dev libc++abi-dev \
+  libelf-dev libgtest-dev liblz4-dev liblz4-tool \
+  libncurses-dev libncurses5-dev libncursesw5-dev \
+  libpcre2-dev libprotobuf-dev libsdl1.2-dev \
+  libssl-dev libstdc++6 libstdc++-12-dev libstdc++-14-dev \
+  libunwind-dev libxml2 libxml2-utils \
+  libzstd-dev lldb lld llvm locate lzop lz4 \
+  make \
+  nano ninja-build npm \
+  openssl \
+  pahole pcre2-utils perl pkg-config pngcrush \
+  protobuf-compiler python3 python-is-python3 \
+  rsync \
+  schedtool sed squashfs-tools \
+  tar unzip \
+  webp wget \
+  xsltproc xz-utils \
+  zip zipalign zlib1g-dev zstd \
+  openjdk-21-jdk
+echo "[*] Cleaning up..."
+sudo apt-get autoremove -y
+sudo apt-get clean
+echo ""
+echo "Done! Environment is ready."
